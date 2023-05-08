@@ -8,6 +8,7 @@ export default defineConfig({
     host: true,
     proxy: {
       '/echo': 'http://backend1:5000/',
+      '/api': 'http://backend1:5000/',
     },
     hmr: {
       clientPort: 5173,

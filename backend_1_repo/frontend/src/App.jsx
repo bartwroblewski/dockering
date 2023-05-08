@@ -7,6 +7,7 @@ function App() {
   const [count, setCount] = useState(0)
 
   fetch('http://localhost:5173/echo')
+  fetch('http://localhost:5173/api/hello')
 
   return (
     <>
