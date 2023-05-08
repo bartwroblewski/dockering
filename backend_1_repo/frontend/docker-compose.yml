@@ -1,0 +1,11 @@
+services: 
+ frontend:
+  build: .
+  working_dir: /app/ # or add "WORKDIR /app/" in Dockerfile instead
+  volumes:
+   - .:/app/
+  ports:
+    - 5173:5173
+
+  tty: true
+  

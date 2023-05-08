@@ -9,10 +9,11 @@ import requests
 # - add linting? (i.e. fastapi module is not recognized)
 # - how to debug docker image in VS code?
 # - prod vs dev dockerfiles? (i.e. gunicorn vs flask server)
+# - is database persistent among builds?
 
 
 app = Flask(__name__)
-connect('dockering', host='mongodb://mongo', username="root", password="example", authentication_source='admin')
+# connect('dockering', host='mongodb://mongo', username="root", password="example", authentication_source='admin')
 
 
 class Person(Document):
@@ -20,7 +21,7 @@ class Person(Document):
     age = fields.IntField()
 
 person = Person(name='Barti', age=100)
-person.save()
+# person.save()
 
 class WorldService:
     def get(self):
@@ -32,8 +33,12 @@ world_service = WorldService()
 @app.route('/api/hello', methods=['GET'])
 def hello_api():
     world = world_service.get()
-    person = Person.objects.first()
+    # person = Person.objects.first()
     return f'hellooo {world}, person: {person.name}'
+
+@app.route('/echo')
+def echo():
+    return {'data': 'hi there'}
 
 frontend_blueprint = Blueprint('frontend', __name__, root_path="frontend", template_folder="templates")
 
