@@ -9,7 +9,7 @@ import requests
 # - how to debug docker image in VS code?
 # - prod vs dev dockerfiles? (i.e. gunicorn vs flask server)
 # - for prod, remove Vite dependency and add NGINX for serving the static build
-# - is database persistent among builds?
+# - is database persistent among builds? - it is , but why does docker compose up result in two instances of Barti person created?
 # - czemu tworzy folder node_modules/.vite na lokalu, gdy docker compose up?
 
 
