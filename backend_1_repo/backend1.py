@@ -3,14 +3,15 @@ from mongoengine import Document, fields, connect
 import requests
 
 # TODO:
-# - add some static files like images, JS, css
-# - play with ports in Flask and Fastapi too see the relationship with dockerfile/dockercompose
-# - add linting? (i.e. fastapi module is not recognized)
-# - how to debug docker image in VS code?
-# - prod vs dev dockerfiles? (i.e. gunicorn vs flask server)
 # - for prod, remove Vite dependency and add NGINX for serving the static build
+# - prod vs dev dockerfiles? (i.e. gunicorn vs flask server)
+# - how to debug docker image in VS code?
+
+# - add some static files like images, JS, css
+# - add linting? (i.e. fastapi module is not recognized)
+
 # - is database persistent among builds? - it is , but why does docker compose up result in two instances of Barti person created?
-# - czemu tworzy folder node_modules/.vite na lokalu, gdy docker compose up?
+# - czemu tworzy folder node_modules/.vite tez na lokalu, gdy docker compose up?
 
 
 app = Flask(__name__)
