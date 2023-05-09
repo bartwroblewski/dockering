@@ -9,6 +9,8 @@ services:
 
   tty: true
 
+# ten krok powienie byc tylko w dockerfile'u devovym,
+# a dockerfile'u produkcyjnym wymieniony na nginxa, ktory buduje frontend i kopiuje do siebie
  frontend:
   build: /backend_1_repo/frontend
   working_dir: /app/ # or add "WORKDIR /app/" in Dockerfile instead
