@@ -21,4 +21,5 @@ export default defineConfig({
     // root: 'app',
     outDir: 'static',
   },
+  base: '/static/frontend',
 })
