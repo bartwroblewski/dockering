@@ -42,11 +42,18 @@ def hello_api():
 def echo():
     return {'data': 'hi there'}
 
-frontend_blueprint = Blueprint('frontend', __name__, root_path="frontend", template_folder="templates")
+frontend_blueprint = Blueprint(
+    'frontend',
+    __name__,
+    root_path="frontend",
+    template_folder="static",
+    static_folder="static",
+    static_url_path='/static/frontend',
+)
 
 @frontend_blueprint.route('/')
 def index():
-    return render_template('frontend/index.html')
+    return render_template('index.html')
 
 app.register_blueprint(frontend_blueprint)
 

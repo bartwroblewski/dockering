@@ -17,4 +17,8 @@ export default defineConfig({
       usePolling: true,
     },
   },
+  build: {
+    // root: 'app',
+    outDir: 'static',
+  },
 })
