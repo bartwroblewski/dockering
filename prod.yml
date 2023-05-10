@@ -2,10 +2,6 @@ services:
  frontend:
   build:
     context: /backend_1_repo/frontend
-    dockerfile: Dockerfile.dev
-  volumes:
-   - ./backend_1_repo/frontend/src:/app/src
-  ports:
-    - 5173:5173
-
+    dockerfile: Dockerfile.prod
+    
   tty: true
