@@ -1,7 +1,7 @@
 services:
  frontend:
   build:
-    context: /backend_1_repo/frontend
-    dockerfile: Dockerfile.prod
+    context: .
+    dockerfile: /backend_1_repo/frontend/Dockerfile.prod
     
   tty: true

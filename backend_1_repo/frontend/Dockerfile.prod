@@ -10,4 +10,6 @@ COPY . .
 
 FROM nginx
 
-COPY static /usr/share/nginx/html
+COPY backend_1_repo/frontend/static /usr/share/nginx/html
+
+COPY nginx.conf /etc/nginx/
