@@ -13,9 +13,8 @@ services:
 # a dockerfile'u produkcyjnym wymieniony na nginxa, ktory buduje frontend i kopiuje do siebie
  frontend:
   build: /backend_1_repo/frontend
-  working_dir: /app/ # or add "WORKDIR /app/" in Dockerfile instead
   volumes:
-   - ./backend_1_repo/frontend:/app/
+   - ./backend_1_repo/frontend/src:/app/src
   ports:
     - 5173:5173
 
@@ -23,7 +22,6 @@ services:
   
  backend2:
   build: /backend_2_repo
-  working_dir: /app/ # or add "WORKDIR /app/" in Dockerfile instead
   volumes:
    - ./backend_2_repo:/app/
   ports:
@@ -38,13 +36,13 @@ services:
       MONGO_INITDB_ROOT_USERNAME: root
       MONGO_INITDB_ROOT_PASSWORD: example
 
- mongo-express:
-    image: mongo-express
-    restart: always
-    ports:
-      - 8081:8081
-    environment:
-    # to login to DB via container's user/bin/mongosh: mongosh -u="root" -p="example"
-      ME_CONFIG_MONGODB_ADMINUSERNAME: root
-      ME_CONFIG_MONGODB_ADMINPASSWORD: example
-      ME_CONFIG_MONGODB_URL: mongodb://root:example@mongo:27017/
+#  mongo-express:
+#     image: mongo-express
+#     restart: always
+#     ports:
+#       - 8081:8081
+#     environment:
+#     # to login to DB via container's user/bin/mongosh: mongosh -u="root" -p="example"
+#       ME_CONFIG_MONGODB_ADMINUSERNAME: root
+#       ME_CONFIG_MONGODB_ADMINPASSWORD: example
+#       ME_CONFIG_MONGODB_URL: mongodb://root:example@mongo:27017/
