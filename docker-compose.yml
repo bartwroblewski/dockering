@@ -12,7 +12,9 @@ services:
 # ten krok powienie byc tylko w dockerfile'u devovym,
 # a dockerfile'u produkcyjnym wymieniony na nginxa, ktory buduje frontend i kopiuje do siebie
  frontend:
-  build: /backend_1_repo/frontend
+  build:
+    context: /backend_1_repo/frontend
+    dockerfile: Dockerfile.dev
   volumes:
    - ./backend_1_repo/frontend/src:/app/src
   ports:
