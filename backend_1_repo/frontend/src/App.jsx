@@ -6,8 +6,13 @@ import './App.css'
 function App() {
   const [count, setCount] = useState(0)
 
-  fetch('http://localhost:5173/echo')
-  fetch('http://localhost:5173/api/hello')
+  // dev
+  // fetch('http://localhost:5173/echo')
+  // fetch('http://localhost:5173/api/hello')
+  "ja pierdole"
+  // prod 
+  fetch('http://backend1:5000/echo')
+  fetch('http://backend1:5000/api/hello')
 
   return (
     <>
