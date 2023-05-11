@@ -2,7 +2,7 @@ services:
  backend1:
   build: 
     context: /backend_1_repo
-    dockerfile: Dockerfile
+    dockerfile: Dockerfile.dev
   volumes:
    - ./backend_1_repo:/app/
   ports:
