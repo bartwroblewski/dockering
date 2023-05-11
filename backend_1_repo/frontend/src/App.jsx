@@ -9,7 +9,6 @@ function App() {
   // dev
   // fetch('http://localhost:5173/echo')
   // fetch('http://localhost:5173/api/hello')
-  "ja pierdole"
   // prod 
   fetch('http://backend1:5000/echo')
   fetch('http://backend1:5000/api/hello')

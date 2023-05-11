@@ -1,14 +1,4 @@
 services:
- backend1:
-  build: /backend_1_repo
-  working_dir: /app/ # or add "WORKDIR /app/" in Dockerfile instead
-  volumes:
-   - ./backend_1_repo:/app/
-  ports:
-    - 5000:5000
-
-  tty: true
-
  backend2:
   build: /backend_2_repo
   volumes:
