@@ -3,6 +3,7 @@ from mongoengine import Document, fields, connect
 import requests
 
 # TODO:
+# - nie moze byc 2 roznych buildow frontendu (dla backendu1 i nginxa), bo bede rozne hashe assetow, i zawsze bedzie skrypt/css not found przez nginxa
 # - for prod, remove Vite dependency and add NGINX for serving the static build
 # - prod vs dev dockerfiles? (i.e. gunicorn vs flask server)
 # - how to debug docker image in VS code?
