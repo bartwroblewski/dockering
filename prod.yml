@@ -2,12 +2,12 @@ services:
  backend1:
   build:
     context: /backend_1_repo
-    dockerfile: Dockerfile.prod
+    dockerfile: Dockerfile
   ports:
     - 5000:5000
 
   tty: true
-  
+
  frontend:
   build:
     context: .
