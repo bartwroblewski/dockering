@@ -2,18 +2,14 @@ FROM node as build-step
 
 WORKDIR /app
 
-COPY backend_1_repo/frontend/package.json .
+COPY backend_1_repo/frontend .
 
 RUN npm install
 
-COPY backend_1_repo/frontend .
-
 RUN npm run build
 
-# COPY . .
+FROM nginx
 
-# FROM nginx
+COPY --from=build-step app/static /usr/share/nginx/html
 
-# COPY --from=build-step /hello/static /usr/share/nginx/html
-
-# COPY nginx.conf /etc/nginx/
+COPY nginx.conf /etc/nginx/
