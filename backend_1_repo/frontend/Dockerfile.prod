@@ -10,6 +10,6 @@ RUN npm run build
 
 FROM nginx
 
-COPY --from=build-step app/static /usr/share/nginx/html
+COPY --from=build-step app/static /usr/share/nginx/html/static/frontend
 
 COPY nginx.conf /etc/nginx/
