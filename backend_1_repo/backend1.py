@@ -1,14 +1,11 @@
-from flask import Flask, url_for, send_from_directory, Blueprint
+from flask import Flask, Blueprint
 from mongoengine import Document, fields, connect
 import requests
 
 # TODO:
-# - nie moze byc 2 roznych buildow frontendu (dla backendu1 i nginxa), bo bede rozne hashe assetow, i zawsze bedzie skrypt/css not found przez nginxa
-# - for prod, remove Vite dependency and add NGINX for serving the static build
 # - prod vs dev dockerfiles? (i.e. gunicorn vs flask server)
 # - how to debug docker image in VS code?
 
-# - add some static files like images, JS, css
 # - add linting? (i.e. fastapi module is not recognized)
 
 # - is database persistent among builds? - it is , but why does docker compose up result in two instances of Barti person created?
@@ -46,18 +43,10 @@ def echo():
 frontend_blueprint = Blueprint(
     'frontend',
     __name__,
-    root_path="frontend",
-    template_folder="static",
-    static_folder="static",
     static_url_path='/static/frontend',
 )
-
-# @frontend_blueprint.route('/')
-# def index():
-#     return app.send_static_file('index.html')
 
 app.register_blueprint(frontend_blueprint)
 
 if __name__ == '__main__':
-    #5000
     app.run(debug=True, host='0.0.0.0')
