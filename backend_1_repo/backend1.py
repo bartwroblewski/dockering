@@ -1,4 +1,4 @@
-from flask import Flask, render_template, Blueprint
+from flask import Flask, url_for, send_from_directory, Blueprint
 from mongoengine import Document, fields, connect
 import requests
 
@@ -52,9 +52,9 @@ frontend_blueprint = Blueprint(
     static_url_path='/static/frontend',
 )
 
-@frontend_blueprint.route('/')
-def index():
-    return render_template('index.html')
+# @frontend_blueprint.route('/')
+# def index():
+#     return app.send_static_file('index.html')
 
 app.register_blueprint(frontend_blueprint)
 
