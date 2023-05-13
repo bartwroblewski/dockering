@@ -7,12 +7,13 @@ function App() {
   const [count, setCount] = useState(0)
 
   // dev
-  // fetch('http://localhost:5173/echo')
-  // fetch('http://localhost:5173/api/hello')
+  fetch('http://localhost:5173/echo')
+  fetch('http://localhost:5173/api/hello')
+  fetch('http://localhost:5173/long_process')
   
   // prod 
-  fetch('http://localhost:8080/echo')
-  fetch('http://localhost:8080/api/hello')
+  // fetch('http://localhost:8080/echo')
+  // fetch('http://localhost:8080/api/hello')
 
   return (
     <>
@@ -36,6 +37,11 @@ function App() {
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
       </p>
+      <button
+        onClick={() => fetch('http://localhost:5173/long_process')}
+      >
+        Long process
+      </button>
     </>
   )
 }

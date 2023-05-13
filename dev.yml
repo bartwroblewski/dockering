@@ -18,6 +18,7 @@ services:
     dockerfile: Dockerfile.dev
   volumes:
    - ./backend_1_repo/frontend/src:/app/src
+   - ./backend_1_repo/frontend/index.html:/app/index.html
   ports:
     - 5173:5173
   tty: true

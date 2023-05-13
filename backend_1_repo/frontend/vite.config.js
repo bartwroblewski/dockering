@@ -9,6 +9,7 @@ export default defineConfig({
     proxy: {
       '/echo': 'http://backend1:5000/',
       '/api': 'http://backend1:5000/',
+      '/long_process': 'http://backend1:5000/',
     },
     hmr: {
       clientPort: 5173,
