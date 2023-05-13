@@ -7,7 +7,9 @@ services:
    - ./backend_1_repo:/app/
   ports:
     - 5000:5000
-
+  depends_on:
+   - redis
+   - mongo
   tty: true
 
  frontend:
@@ -18,5 +20,4 @@ services:
    - ./backend_1_repo/frontend/src:/app/src
   ports:
     - 5173:5173
-
   tty: true

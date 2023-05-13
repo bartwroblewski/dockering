@@ -5,7 +5,9 @@ services:
     dockerfile: Dockerfile
   ports:
     - 5000:5000
-
+  depends_on:
+   - redis
+   - mongo
   tty: true
 
  frontend:
@@ -14,5 +16,4 @@ services:
     dockerfile: /backend_1_repo/frontend/Dockerfile.prod
   ports:
     - 8080:8080
-    
   tty: true

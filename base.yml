@@ -5,7 +5,6 @@ services:
    - ./backend_2_repo:/app/
   ports:
     - 8000:8000
-
   tty: true
 
  mongo:
@@ -14,6 +13,18 @@ services:
     environment:
       MONGO_INITDB_ROOT_USERNAME: root
       MONGO_INITDB_ROOT_PASSWORD: example
+
+ redis:
+    image: redis
+    ports:
+      - 6379:6379
+
+ celery-worker:
+    build: /backend_1_repo
+    volumes:
+      - ./backend_1_repo:/app
+    entrypoint: celery
+    command: -A backend1.celery_app worker --loglevel INFO
 
 #  mongo-express:
 #     image: mongo-express
