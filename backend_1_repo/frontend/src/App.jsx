@@ -9,7 +9,6 @@ function App() {
   // dev
   fetch('http://localhost:5173/echo')
   fetch('http://localhost:5173/api/hello')
-  fetch('http://localhost:5173/long_process')
   
   // prod 
   // fetch('http://localhost:8080/echo')
