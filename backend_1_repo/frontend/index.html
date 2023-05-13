@@ -3,7 +3,7 @@
   <head>
     <script>
         // Create WebSocket connection.
-      const socket = new WebSocket("ws://localhost:5000");
+      const socket = new WebSocket("ws://localhost:5173");
 
       // Connection opened
       socket.addEventListener("open", (event) => {
@@ -11,9 +11,9 @@
       });
 
       // Listen for messages
-      // socket.addEventListener("long_process_done", (event) => {
-      //   console.log("Message from server ", event.data);
-      // });
+      socket.addEventListener("long_process_done", (event) => {
+        console.log("Message from server ", event.data);
+      });
     </script>
 
     <meta charset="UTF-8" />

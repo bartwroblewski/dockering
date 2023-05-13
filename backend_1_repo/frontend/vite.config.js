@@ -10,6 +10,10 @@ export default defineConfig({
       '/echo': 'http://backend1:5000/',
       '/api': 'http://backend1:5000/',
       '/long_process': 'http://backend1:5000/',
+      '/socket.io': {
+        target: 'ws://backend1:5000',
+        ws: true,
+      },
     },
     hmr: {
       clientPort: 5173,

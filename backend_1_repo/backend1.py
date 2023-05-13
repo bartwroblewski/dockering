@@ -9,6 +9,7 @@ from mongoengine import Document, fields, connect
 import requests
 
 # TODO:
+# - wprowadzic zmienna srodowiskowa do Vite'a na URLe fetchowane
 # - deploy somewhere (digital ocean)
 # - prod vs dev dockerfiles? (i.e. gunicorn vs flask server)
 # - how to debug docker image in VS code?
@@ -38,7 +39,7 @@ app.config.from_mapping(
         task_ignore_result=True,
     ),
 )
-socketio = SocketIO(app)
+socketio = SocketIO(message_queue='redis://redis')
 celery_app = celery_init_app(app)
 
 @shared_task(ignore_result=False)
@@ -47,7 +48,7 @@ def long_blocking_process():
     # for letter in alphabet:
     #     Person(name=letter, age=0).save()
     #     time.sleep(5)
-    emit('long_process_done', {'data': 42})
+    socketio.emit('long_process_done', {'data': 42})
 
 
 connect('dockering', host='mongodb://mongo', username="root", password="example", authentication_source='admin')
