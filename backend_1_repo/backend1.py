@@ -3,6 +3,7 @@ from mongoengine import Document, fields, connect
 import requests
 
 # TODO:
+# - deploy somewhere (digital ocean)
 # - prod vs dev dockerfiles? (i.e. gunicorn vs flask server)
 # - how to debug docker image in VS code?
 
