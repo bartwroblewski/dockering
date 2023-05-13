@@ -25,6 +25,8 @@ services:
       - ./backend_1_repo:/app
     entrypoint: celery
     command: -A backend1.celery_app worker --loglevel INFO
+    depends_on:
+      - redis
 
 #  mongo-express:
 #     image: mongo-express
