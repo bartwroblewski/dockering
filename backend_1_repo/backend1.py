@@ -39,8 +39,8 @@ app.config.from_mapping(
         task_ignore_result=True,
     ),
 )
-socketio = SocketIO(message_queue='redis://redis')
 celery_app = celery_init_app(app)
+socketio = SocketIO(app)
 
 @shared_task(ignore_result=False)
 def long_blocking_process():
@@ -107,4 +107,4 @@ frontend_blueprint = Blueprint(
 app.register_blueprint(frontend_blueprint)
 
 if __name__ == '__main__':
-    app.run(debug=True, host='0.0.0.0')
+    socketio.run(app, debug=True, host='0.0.0.0')
