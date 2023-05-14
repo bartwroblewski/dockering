@@ -82,6 +82,8 @@ def echo():
 
 @app.route('/long_process')
 def long_process():
+    socketio.emit('long_process_done', {'data': 45454})
+    return 'ok'
     result = long_blocking_process.delay()
     return {'result_id': result.id}
 
