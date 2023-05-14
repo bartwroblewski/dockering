@@ -7,8 +7,11 @@
         socket.on('connect', function() {
             console.log('hi there')
         });
+        socket.addEventListener("long_process_ack", (event) => {
+          console.log("Long process acknowledged ", event);
+        });
         socket.addEventListener("long_process_done", (event) => {
-          console.log("Message from server ", event.data);
+          console.log("Long process done ", event.data);
         });
     </script>
 
