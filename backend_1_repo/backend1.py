@@ -41,7 +41,8 @@ app.config.from_mapping(
     ),
 )
 celery_app = celery_init_app(app)
-socketio = SocketIO(app)
+socketio = SocketIO(app, message_queue="redis://redis")
+sock = SocketIO(message_queue="redis://redis")
 
 @shared_task(ignore_result=False)
 def long_blocking_process():
@@ -50,12 +51,8 @@ def long_blocking_process():
     # for letter in alphabet:
     #     Person(name=letter, age=0).save()
     #     time.sleep(5)
+    sock.emit('long_process_done', {'data': 42})
 
-    # Ideally I would like to use "socketio.emit('long_process_done', {'data': 42})" here directly
-    # instead of sending a request from Celery worker to Flask backend that subsequently
-    # emits a websocket message. This would require figuring out how to create a separate SocketIO instance
-    # that is not bound to Flask app, but communicates over message queue (Redis) instead
-    requests.get('http://backend1:5000/long_process_done')
 
 @app.route('/long_process_done')
 def long_process_done():
