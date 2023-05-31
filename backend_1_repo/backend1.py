@@ -9,11 +9,16 @@ from celery.result import AsyncResult
 from mongoengine import Document, fields, connect
 import requests
 
+# things to remember about debugging a Docker container:
+# - docker-compose needs to map port 5678:5678
+# - if remote Docker debugging, use --wait option in CMD ptvsd and add remote IP to launch.json "host"
+# - if local Docker debugging, do not use --wait and add localhost to launch.json "host"
+# - do not run Flask in debug mode (also, dont use reload?)
+
 # TODO:
 # - wprowadzic zmienna srodowiskowa do Vite'a na URLe fetchowane
 # - deploy somewhere (digital ocean)
 # - prod vs dev dockerfiles? (i.e. gunicorn vs flask server)
-# - how to debug docker image in VS code?
 
 # - add linting? (i.e. fastapi module is not recognized)
 
@@ -115,4 +120,4 @@ frontend_blueprint = Blueprint(
 app.register_blueprint(frontend_blueprint)
 
 if __name__ == '__main__':
-    socketio.run(app, debug=True, host='0.0.0.0')
+    socketio.run(app, host='0.0.0.0')
