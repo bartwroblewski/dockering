@@ -11,6 +11,8 @@ services:
   tty: true
 
  frontend:
+  depends_on:
+    - backend1
   build:
     context: ./backend_1_repo/frontend
     dockerfile: Dockerfile.dev
