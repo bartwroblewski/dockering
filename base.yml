@@ -1,40 +1,26 @@
 services:
- backend2:
-  build: /backend_2_repo
+ backend1:
+  build: 
+    context: ./backend_1_repo
+    dockerfile: Dockerfile
   volumes:
-   - ./backend_2_repo:/app/
+   - ./backend_1_repo:/app
   ports:
-    - 8000:8000
+    - 5000:5000
+    - 5678:5678
+  depends_on:
+   - redis
+   - mongo
   tty: true
 
- mongo:
-    image: mongo
-    restart: always
-    environment:
-      MONGO_INITDB_ROOT_USERNAME: root
-      MONGO_INITDB_ROOT_PASSWORD: example
-
- redis:
-    image: redis
-    ports:
-      - 6379:6379
-
- celery-worker:
-    build: /backend_1_repo
-    volumes:
-      - ./backend_1_repo:/app
-    entrypoint: celery
-    command: -A backend1.celery_app worker --loglevel INFO
-    depends_on:
-      - redis
-
-#  mongo-express:
-#     image: mongo-express
-#     restart: always
-#     ports:
-#       - 8081:8081
-#     environment:
-#     # to login to DB via container's user/bin/mongosh: mongosh -u="root" -p="example"
-#       ME_CONFIG_MONGODB_ADMINUSERNAME: root
-#       ME_CONFIG_MONGODB_ADMINPASSWORD: example
-#       ME_CONFIG_MONGODB_URL: mongodb://root:example@mongo:27017/
+ frontend:
+  build:
+    context: ./backend_1_repo/frontend
+    dockerfile: Dockerfile.dev
+  volumes:
+   - ./backend_1_repo/frontend/src:/app/src
+   - ./backend_1_repo/frontend/index.html:/app/index.html
+   - ./backend_1_repo/frontend/vite.config.js:/app/vite.config.js
+  ports:
+    - 5173:5173
+  tty: true
